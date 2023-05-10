@@ -108,6 +108,10 @@ sce$Tissue <- factor(
   sce$Tissue,
   levels = c("Bone", "Heart", "Lymph node", "Muscle", "Skin", "Spleen"))
 
+# NOTE: `Day` is recorded as a character rather than integer in the data
+#       uploaded to GEO.
+sce$Day <- as.character(sce$Day)
+
 sce$group <- interaction(
   sce$Tissue,
   sce$Day,
@@ -274,4 +278,3 @@ write.csv(
   here(degust_dir, "Treg.heart_paper.UMI_counts.pseudobulked.csv"),
   quote = TRUE,
   row.names = FALSE)
-
