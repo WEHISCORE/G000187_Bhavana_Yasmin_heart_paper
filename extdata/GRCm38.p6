@@ -1,0 +1,1 @@
+/stornext/Projects/score/Indexes/GRCm38.p6
