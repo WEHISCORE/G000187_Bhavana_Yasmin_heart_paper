@@ -15,11 +15,11 @@ In brief:
 3. Aligned reads are assigned to the annotated exons of the GENCODE comprehensive gene annotation on the primary assembly ([`gencode.vM25.primary_assembly.annotation.gff3`](https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M25/gencode.vM25.primary_assembly.annotation.gff3.gz)) with `scPipe::sc_exon_mapping()`.
 4. Aligned reads that are mapped to annotated exons are demultiplexed by the cell barcode using `scPipe::sc_demultiplex()`. Only the first 7 bp of the 8 bp cell barcode are used because the quality of the last base in the cell barcode is often poor.
 5. Generate the gene count matrices (UMI-deduplicated and non-deduplicated versions)
-  a. UMI-deduplicated: Use `scPipe::sc_gene_counting()` to perform simple correction of the UMIs to merge UMIs with and edit distance of 1.
-  b. Non-deduplicated: Use a custom function, `geneCountingNoUMIDedup()`, to create a gene count matrix while ignoring the UMI data (i.e. no deduplication based on UMIs).
+    a. UMI-deduplicated: Use `scPipe::sc_gene_counting()` to perform simple correction of the UMIs to merge UMIs with and edit distance of 1.
+    b. Non-deduplicated: Use a custom function, `geneCountingNoUMIDedup()`, to create a gene count matrix while ignoring the UMI data (i.e. no deduplication based on UMIs).
 6. Create [*SingleCellExperiment*](https://bioconductor.org/packages/SingleCellExperiment/) objects of each count matrix and incorporating the sample metadata.
-  a. UMI-deduplicated: [`data/SCEs/G000187_Bhavana_Yasmin_heart_paper.UMI_deduped.scPipe.SCE.rds`](data/SCEs/G000187_Bhavana_Yasmin_heart_paper.UMI_deduped.scPipe.SCE.rds).
-  b. Non-deduplicated: [`data/SCEs/G000187_Bhavana_Yasmin_heart_paper.not_UMI_deduped.scPipe.SCE.rds`](data/SCEs/G000187_Bhavana_Yasmin_heart_paper.not_UMI_deduped.scPipe.SCE.rds).
+    a. UMI-deduplicated: [`data/SCEs/G000187_Bhavana_Yasmin_heart_paper.UMI_deduped.scPipe.SCE.rds`](data/SCEs/G000187_Bhavana_Yasmin_heart_paper.UMI_deduped.scPipe.SCE.rds).
+    b. Non-deduplicated: [`data/SCEs/G000187_Bhavana_Yasmin_heart_paper.not_UMI_deduped.scPipe.SCE.rds`](data/SCEs/G000187_Bhavana_Yasmin_heart_paper.not_UMI_deduped.scPipe.SCE.rds).
 
 The [*SingleCellExperiment*](https://bioconductor.org/packages/SingleCellExperiment/) objects then undergo some additional processing; see [`code/G000187_Bhavana_Yasmin_heart_paper.preprocess.R`](code/G000187_Bhavana_Yasmin_heart_paper.preprocess.R).
 In brief:
