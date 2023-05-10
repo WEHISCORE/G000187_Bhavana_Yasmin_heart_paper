@@ -105,6 +105,18 @@ sce$group <- interaction(
   drop = TRUE,
   lex.order = TRUE)
 
+# Re-order rows to match that of the original data processing.
+rn <- readLines(here("data/original_row_order.txt"))
+stopifnot(
+  identical(setdiff(rn, rownames(sce)), character(0)),
+  identical(setdiff(rownames(sce), rn), character(0)))
+aern <- readLines(here("data/original_row_order.ERCC.txt"))
+stopifnot(
+  identical(setdiff(aern, rownames(altExp(sce))), character(0)),
+  identical(setdiff(rownames(altExp(sce)), aern), character(0)))
+sce <- sce[rn, ]
+altExp(sce) <- altExp(sce)[aern, ]
+
 # Incorporating gene-based annotation ------------------------------------------
 
 # Extract rownames (Ensembl IDs) to use as key in database lookups.
