@@ -215,44 +215,44 @@ dir.create(degust_dir)
 # Write Macrophage CSVs
 write.csv(
   SCE2DegustCSV(sce[, sce$experiment == "Macrophage"], "read_counts"),
-  here(degust_dir, "Macrophage.read_counts.csv"),
+  here(degust_dir, "Macrophage.heart_paper.read_counts.csv"),
   quote = TRUE,
   row.names = FALSE)
 write.csv(
   SCE2DegustCSV(sce[, sce$experiment == "Macrophage"], "UMI_counts"),
-  here(degust_dir, "Macrophage.UMI_counts.csv"),
+  here(degust_dir, "Macrophage.heart_paper.UMI_counts.csv"),
   quote = TRUE,
   row.names = FALSE)
 write.csv(
   SCE2DegustCSV(pb_se[, pb_se$experiment == "Macrophage"], "read_counts"),
-  here(degust_dir, "Macrophage.read_counts.pseudobulked.csv"),
+  here(degust_dir, "Macrophage.heart_paper.read_counts.pseudobulked.csv"),
   quote = TRUE,
   row.names = FALSE)
 write.csv(
   SCE2DegustCSV(pb_se[, pb_se$experiment == "Macrophage"], "UMI_counts"),
-  here(degust_dir, "Macrophage.UMI_counts.pseudobulked.csv"),
+  here(degust_dir, "Macrophage.heart_paper.UMI_counts.pseudobulked.csv"),
   quote = TRUE,
   row.names = FALSE)
 
 # Write Treg CSVs
 write.csv(
   SCE2DegustCSV(sce[, sce$experiment == "Treg"], "read_counts"),
-  here(degust_dir, "Treg.read_counts.csv"),
+  here(degust_dir, "Treg.heart_paper.read_counts.csv"),
   quote = TRUE,
   row.names = FALSE)
 write.csv(
   SCE2DegustCSV(sce[, sce$experiment == "Treg"], "UMI_counts"),
-  here(degust_dir, "Treg.UMI_counts.csv"),
+  here(degust_dir, "Treg.heart_paper.UMI_counts.csv"),
   quote = TRUE,
   row.names = FALSE)
 write.csv(
   SCE2DegustCSV(pb_se[, pb_se$experiment == "Treg"], "read_counts"),
-  here(degust_dir, "Treg.read_counts.pseudobulked.csv"),
+  here(degust_dir, "Treg.heart_paper.read_counts.pseudobulked.csv"),
   quote = TRUE,
   row.names = FALSE)
 write.csv(
   SCE2DegustCSV(pb_se[, pb_se$experiment == "Treg"], "UMI_counts"),
-  here(degust_dir, "Treg.UMI_counts.pseudobulked.csv"),
+  here(degust_dir, "Treg.heart_paper.UMI_counts.pseudobulked.csv"),
   quote = TRUE,
   row.names = FALSE)
 
