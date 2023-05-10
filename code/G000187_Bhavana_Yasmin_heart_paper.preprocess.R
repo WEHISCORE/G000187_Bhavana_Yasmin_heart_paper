@@ -10,9 +10,15 @@ library(here)
 # Setting up the data ----------------------------------------------------------
 
 sce_deduped <- readRDS(
-  here("data", "SCEs", "G000187_Bhavana_Yasmin_heart_paper.UMI_deduped.scPipe.SCE.rds"))
+  here(
+    "data",
+    "SCEs",
+    "G000187_Bhavana_Yasmin_heart_paper.UMI_deduped.scPipe.SCE.rds"))
 sce_not_deduped <- readRDS(
-  here("data", "SCEs", "G000187_Bhavana_Yasmin_heart_paper.not_UMI_deduped.scPipe.SCE.rds"))
+  here(
+    "data",
+    "SCEs",
+    "G000187_Bhavana_Yasmin_heart_paper.not_UMI_deduped.scPipe.SCE.rds"))
 
 # Drop non-'heart paper' samples.
 sce_deduped <- sce_deduped[, !is.na(sce_deduped$sample_descriptor_tissue)]
@@ -77,7 +83,9 @@ sample_metadata_df <- read_excel(
     "sample_sheets",
     "G000187_Bhavana_Yasmin_heart_paper.sample_metadata.xlsx"))
 
-# NOTE: Bhavana modified the `Sample ID` value for some rows. I have now corrected the XLSX file on google sheets and GitHub so the modifications are not needed.
+# NOTE: Bhavana modified the `Sample ID` value for some rows. I have now
+#       corrected the XLSX file on google sheets and GitHub so the
+#       modifications are not needed.
 stopifnot(
   all(sce$sample_descriptor_tissue %in% sample_metadata_df$`Sample ID`) &
     all(sample_metadata_df$`Sample ID` %in% sce$sample_descriptor_tissue))
@@ -96,7 +104,9 @@ colData(sce) <- DataFrame(
 #       `Treatment`(?) or similar and set to NA for Treg samples.
 sce$Condition[sce$experiment == "Treg"] <- "NA"
 
-sce$Tissue <- factor(sce$Tissue, levels = c("Bone", "Heart", "Lymph node", "Muscle", "Skin", "Spleen"))
+sce$Tissue <- factor(
+  sce$Tissue,
+  levels = c("Bone", "Heart", "Lymph node", "Muscle", "Skin", "Spleen"))
 
 sce$group <- interaction(
   sce$Tissue,
