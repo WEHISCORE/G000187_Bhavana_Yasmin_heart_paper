@@ -108,9 +108,13 @@ sce$Tissue <- factor(
   sce$Tissue,
   levels = c("Bone", "Heart", "Lymph node", "Muscle", "Skin", "Spleen"))
 
-# NOTE: `Day` is recorded as a character rather than integer in the data
+# NOTE: `Biological replicate` is recorded as a character rather than integer
+#       in the data uploaded to GEO.
+sce$`Biological replicate` <- as.character(sce$`Biological replicate`)
+
+# NOTE: `Mouse` is recorded as a character rather than integer in the data
 #       uploaded to GEO.
-sce$Day <- as.character(sce$Day)
+sce$Mouse <- as.character(sce$Mouse)
 
 sce$group <- interaction(
   sce$Tissue,
