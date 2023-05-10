@@ -193,11 +193,20 @@ rownames(sce) <- uniquifyFeatureNames(
     }
   }))
 
+# Have we sequenced enough? ----------------------------------------------------
+
+saturation <- 1 -
+  (colSums(assay(sce, "UMI_counts")) / colSums(assay(sce, "read_counts")))
+sce$saturation <- saturation
+
 # Concluding remarks -----------------------------------------------------------
 
 saveRDS(
   sce,
-  here("data", "SCEs", "G000187_Bhavana_Yasmin_heart_paper.preprocessed.SCE.rds"),
+  here(
+    "data",
+    "SCEs",
+    "G000187_Bhavana_Yasmin_heart_paper.preprocessed.SCE.rds"),
   compress = "xz")
 
 # Degust outputs ---------------------------------------------------------------
